@@ -5,6 +5,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.file.Paths;
 
 import static org.junit.Assert.assertTrue;
 
@@ -17,8 +18,9 @@ public class StepsDefinitions {
         caps.setCapability("platformName", "Android");
         caps.setCapability("automationName", "UiAutomator2");
         caps.setCapability("deviceName", "Small Phone API 36");
-        caps.setCapability("app", "C:\\Users\\juan_\\Desktop\\APKS\\General-Store.apk");
-
+        //caps.setCapability("app", "C:\\Users\\juan_\\Desktop\\APKS\\General-Store.apk");
+        String apkPath = Paths.get("src", "test","java", "resources", "apk", "General-Store.apk").toAbsolutePath().toString();
+        caps.setCapability("app", apkPath);
         driver = new AndroidDriver<>(new URL("http://127.0.0.1:4723"), caps);
     }
 
